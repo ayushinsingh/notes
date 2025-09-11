@@ -1,32 +1,46 @@
-import React from 'react'
+import React from "react";
 
-const Login = () => {
+const Login: React.FC = () => {
   return (
-    <div className='container'>
-      <div className='icon'>icon</div>
-      <div className='message-container'>
-        <div className='message-title'><h1>Welcome To Notes</h1></div>
-        <div className='message-dexcription'>Please login to continue</div>
-      </div>
-      <div className='form'>
-        <form>
-          <div className='input email'>
-            <label>Email Address</label>
-            <input type='email' placeholder='email@example.com'></input>
+    <div className="min-h-screen flex justify-center items-center margin-auto bg-neutral-100">
+      <div className="w-full shadow-lg flex justify-center flex-col bg-white p-4 sm:p-8 md:p-12 rounded-lg gap-[1rem] max-w-[343px] sm:max-w-[522px] md:max-w-[540px]">
+        <div className="w-full flex justify-center">
+          <img src="/logo.svg" alt="Logo" className="h-7 w-20" />
+        </div>
+        <div className= "w-full flex flex-col gap-2">
+          <h1 className="text-center text-xl color-neutral-950">Welcome to Note</h1>
+          <p className="text-center text-xs text-gray-500">Please log in to continue</p>
+        </div>
+        <form className="w-full flex flex-col gap-4">
+          <div className="w-full flex flex-col gap-1">
+            <label htmlFor="email" className="text-sm text-gray-700">Email</label>
+            <input type="email" id="email" placeholder="email@example.com" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
           </div>
-          
-          <div className='input-password'>
-            <a>forgot</a>
-            <label>Password</label>
-            <input type="password" placeholder='email@example.com'></input>
+          <div className="w-full flex flex-col gap-1">
+            <div className="w-full flex justify-between items-center">
+              <label htmlFor="password" className="text-sm text-gray-700">Email</label>
+              <a href="#" className="text-xs text-gray-500 underline">Forgot</a>
+            </div>
+            <input type="password" id="password" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
           </div>
-          <div>
-            <button type='submit' className='submit-button'>Login</button>
-          </div>
+          <button type="submit" className="w-full bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors py-2">Login</button>
         </form>
+        <div className="w-full flex flex-col gap-4">
+          <hr className="flex-grow border-gray-200"/>
+          <p className="text-center text-gray-400 text-xs">Or log in with:</p>
+          <button className="w-full border border-gray-300 rounded-lg hover:bg-gray-100 transition-colors py-2 flex items-center gap-2 justify-center">
+            <img src="/Vector.svg" alt="Google Logo" className="h-5 w-5 "/>
+            Google
+          </button>
+        </div>
+        <hr className="flex-grow border-gray-200"/>
+        <div className="w-full flex justify-center items-center gap-1">
+          <span className="text-xs text-gray-500">No account yet?</span>
+          <a href="#" className="text-xs hover:underline">Sign up</a>
+        </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Login
+export default Login;
