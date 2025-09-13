@@ -8,7 +8,7 @@ const Login: React.FC = () => {
           <img src="/logo.svg" alt="Logo" className="h-7 w-20" />
         </div>
         <div className= "w-full flex flex-col gap-2">
-          <h1 className="text-center text-xl color-neutral-950">Welcome to Note</h1>
+          <h1 className="text-center font-bold text-xl color-neutral-950">Welcome to Note</h1>
           <p className="text-center text-xs text-gray-500">Please log in to continue</p>
         </div>
         <form className="w-full flex flex-col gap-4">
@@ -18,10 +18,13 @@ const Login: React.FC = () => {
           </div>
           <div className="w-full flex flex-col gap-1">
             <div className="w-full flex justify-between items-center">
-              <label htmlFor="password" className="text-sm text-gray-700">Email</label>
-              <a href="#" className="text-xs text-gray-500 underline">Forgot</a>
+              <label htmlFor="password" className="text-sm text-gray-700">Password</label>
+              <a href="/forgot-password" className="text-xs text-gray-500 underline">Forgot</a>
             </div>
-            <input type="password" id="password" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <div className="inline-block w-full relative">
+              <input type="password" id="password" className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <span className="absolute top-[25%] right-4"><img className="w-5 h-5" src="/Show.svg" /></span>
+            </div>
           </div>
           <button type="submit" className="w-full bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors py-2">Login</button>
         </form>
@@ -36,7 +39,7 @@ const Login: React.FC = () => {
         <hr className="flex-grow border-gray-200"/>
         <div className="w-full flex justify-center items-center gap-1">
           <span className="text-xs text-gray-500">No account yet?</span>
-          <a href="#" className="text-xs hover:underline">Sign up</a>
+          <a href="/signup" className="text-xs hover:underline">Sign up</a>
         </div>
       </div>
     </div>
