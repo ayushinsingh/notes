@@ -11,7 +11,7 @@ interface SecondaryButtonProps {
 
 const SecondaryButton: React.FC<SecondaryButtonProps> = (props) => {
   return (
-    <button className="w-full border border-gray-300 rounded-lg hover:bg-gray-100 transition-colors py-2 flex items-center gap-2 justify-center">
+    <button className="border border-gray-300 bg-gray-100 rounded-lg hover:bg-gray-100 transition-colors px-4 py-2 flex items-center gap-2 justify-center">
       {props.children}
     </button>
   );

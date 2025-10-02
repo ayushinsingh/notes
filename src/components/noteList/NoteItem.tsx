@@ -1,4 +1,5 @@
 import React from 'react';
+import { formatDateWithSuffix } from '../../utils';
 
 interface NoteItemProps {
   tags: string[];
@@ -10,38 +11,10 @@ interface NoteItemProps {
 
 const NoteItem: React.FC<NoteItemProps> = ({title, tags, date, selected, onClick}) => {
 
-  function formatDateWithSuffix(isoString: string) {
-    const date = new Date(isoString);
-
-    // Add suffix (st, nd, rd, th)
-    function getDayWithSuffix(day: number) {
-      if (day > 3 && day < 21) return day + "th";
-      switch (day % 10) {
-        case 1:
-          return day + "st";
-        case 2:
-          return day + "nd";
-        case 3:
-          return day + "rd";
-        default:
-          return day + "th";
-      }
-    }
-
-    const day = getDayWithSuffix(date.getUTCDate());
-    const month = date.toLocaleString("en-US", {
-      month: "short",
-      timeZone: "UTC",
-    });
-    const year = date.getUTCFullYear();
-
-    return `${day} ${month} ${year}`;
-  }
-
   return (
-    <div className={`flex flex-col gap-4 border-b border-gray-200 p-2 hover:bg-gray-100 rounded-sm cursor-pointer ${selected ? "bg-gray-100" : ""}`} onClick={onClick}>
-        <h3 className="text-xl font-semibold ">{title}</h3>
-        <div className="flex flex-row gap-1">
+    <div className={`flex flex-col gap-2 border-b border-gray-200 p-2 hover:bg-gray-100 rounded-sm cursor-pointer ${selected ? "bg-gray-100" : ""}`} onClick={onClick}>
+        <h3 className="text-lg font-semibold">{title}</h3>
+        {tags.length > 0 && <div className="flex flex-row gap-1">
           {tags.map((tag: string) => (
             <span
               key={tag}
@@ -51,7 +24,8 @@ const NoteItem: React.FC<NoteItemProps> = ({title, tags, date, selected, onClick
             </span>
           ))}
         </div>
-        <p className="text-xs">{formatDateWithSuffix(date)}</p>
+        }
+        {date && <p className="text-xs">{formatDateWithSuffix(date)}</p>}
       </div>
   )
 }

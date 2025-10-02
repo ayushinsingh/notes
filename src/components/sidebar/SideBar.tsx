@@ -1,38 +1,26 @@
 import React from "react";
 import MenuBar from "./MenuBar";
+import { getAllTags } from "../../api";
 
-const SideBar: React.FC = () => {
-  const [selected, setSelected] = React.useState<string>("All Notes");
+interface SideBarProps {
+  selected?: string;
+  setSelected: (tag: string) => void;
+}
+
+const SideBar: React.FC<SideBarProps> = ({selected, setSelected}) => {
+  const [tags, setTags] = React.useState<string[]>([]);
   const typeOfNotes = [
-    { logoName: "Home.svg", label: "All Notes", path: "/" },
-    { logoName: "Archive.svg", label: "Archive Notes", path: "/archive" },
+    { logoName: "Home.svg", label: "All Notes" },
+    { logoName: "Archive.svg", label: "Archive Notes" },
   ];
-  const allTags: { label: string; path: string }[] = [
-    {
-      label: "Cooking",
-      path: "/tag/cooking"
-    },
-    {
-      label: "Dev",
-      path: "/tag/dev"
-    },
-    {
-      label: "React",
-      path: "/tag/react"
-    },
-    {
-      label: "Fitness",
-      path: "/tag/fitness"
-    },
-    {
-      label: "Personal",
-      path: "/tag/personal"
-    },
-    {
-      label: "Travel",
-      path: "/tag/travel"
-    },
-  ];
+
+  React.useEffect(() => {
+    getAllTags().then((data) => {
+      setTags(data);
+    });
+  }, []);
+  
+  
   return (
     <aside className="flex-column justify-center border border-gray-200 p-4 gap-4">
       <div className="flex w-full py-4">
@@ -54,13 +42,13 @@ const SideBar: React.FC = () => {
         <div>
           <h2 className="text-sm text-gray-500 mx-1">Tags</h2>
           <div>
-          {allTags.map((tag) => (
+          {tags.map((tag) => (
             <MenuBar
-              key={tag.label}
+              key={tag}
               logoName={"Tag.svg"}
-              label={tag.label}
-              selected={selected === tag.label}
-              onClick={() => setSelected(tag.label)}
+              label={tag}
+              selected={selected === tag}
+              onClick={() => setSelected(tag)}
             />
           ))}
           </div>

@@ -1,15 +1,126 @@
-import React from 'react';
+import React from "react";
+import PrimaryButton from "../buttons/PrimaryButton";
+import SecondaryButton from "../buttons/SecondaryButton";
+import { fetchNoteById, type NoteType } from "../../api";
+import { formatDateWithSuffix } from "../../utils";
 
 interface NoteProps {
-  id: string;
-};
-
-const Note: React.FC<NoteProps> = () => {
-  return (
-    <div>
-      
-    </div>
-  )
+  id?: string;
 }
 
-export default Note
+const Note: React.FC<NoteProps> = ({id}) => {
+  const [title, setTitle] = React.useState<string>("");
+  const [tags, setTags] = React.useState<string>("");
+  const [content, setContent] = React.useState<string>("");
+  const [isArchived, setIsArchived] = React.useState<boolean>(false);
+  const [lastEdited, setLastEdited] = React.useState<string>("Not yet saved");
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission logic here
+    if(!id) {
+      // Create a new note
+      const payload = {
+        title: title,
+        tags: tags.split(",").map(tag => tag.trim()),
+        content: content,
+        isArchived: isArchived,
+      }
+    } else {
+      // Update existing note
+      const payload = {
+        title: title,
+        tags: tags.split(",").map(tag => tag.trim()),
+        content: content,
+        isArchived: isArchived,
+        id: id,
+      }
+    }
+
+  }
+
+  React.useEffect(() => {
+    if(!id) return;
+    // Fetch note data from API or local storage using the id prop
+    // For demonstration, we'll use static data
+    fetchNoteById(id).then((data) => {
+      if(data) {
+        const note = data as NoteType;
+        setTitle(note.title);
+        setTags(note.tags.join(", "));
+        setContent(note.content);
+        setIsArchived(note.isArchived);
+        setLastEdited(formatDateWithSuffix(note.lastEdited));
+      }
+    });
+  }, [id]);
+
+  return (
+    <div className="grid grid-cols-[1fr_30%] h-screen">
+      <form className="flex flex-col gap-4 px-6 py-4 border-r border-gray-200 h-screen" onSubmit={(e) => { e.preventDefault(); /* Handle form submission */ }}>
+        <input
+          id="title"
+          className="w-full text-3xl font-bold border-0 focus:ring-0 focus:outline-none text-neutral-900"
+          placeholder="Enter a title..."
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+        />
+        <div className="flex flex-col text-gray-500">
+          <div className="flex flex-row">
+            <label htmlFor="tags" className="flex items-center text-md w-40">
+              <img className="w-6 h-5" src="/Tag.svg" />
+              <span>Tags</span>
+            </label>
+            <input
+              id="tags"
+              className="w-full px-1 rounded-md"
+              placeholder="Add tags separated by commas (e.g. Work, Planning)"
+              value={tags}
+              onChange={(e) => setTags(e.target.value)}
+            />
+          </div>
+        </div>
+        {isArchived && (
+          <div className="flex flex-col text-gray-500">
+            <div className="flex flex-row">
+              <div className="flex items-center text-md  w-40">
+                <img className="w-6 h-5" src="/Loading.svg" />
+                <span>Status</span>
+              </div>
+              <p className="w-full focus:none text-md px-1">Archived</p>
+            </div>
+          </div>
+        )}
+        <div className="flex flex-col text-gray-500">
+          <div className="flex flex-row">
+            <div className="flex items-center text-md  w-40">
+              <img className="w-6 h-5" src="/CircleClock.svg" />
+              <span>Last edited</span>
+            </div>
+            <p className="w-full focus:none text-md px-1">{lastEdited}</p>
+          </div>
+        </div>
+        <hr className="border border-gray-200" />
+        <textarea
+          id="content"
+          className="w-full border-0 focus:ring-0 focus:outline-none resize-none h-[61vh] overflow-y-auto"
+          placeholder="Start writing your note here..."
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+        />
+        <hr className="border border-gray-200" />
+        <div className="flex flex-row justify-start gap-4">
+          <PrimaryButton id="save-note-button" type="submit">
+            Save Note
+          </PrimaryButton>
+          <SecondaryButton id="cancel" type="button">
+            Cancel
+          </SecondaryButton>
+        </div>
+      </form>
+      <div></div>
+    </div>
+  );
+};
+
+export default Note;
