@@ -14,6 +14,9 @@ const PrimaryButton: React.FC<PrimaryButtonProps> = (props) => {
     <button
       type={props.type || "button"}
       className="bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors px-4 py-2"
+      onClick={props.onClick}
+      disabled={props.disabled}
+      id={props.id}
     >
       {props.children}
     </button>

@@ -5,29 +5,41 @@ import { fetchNotes, type NoteType } from "../../api";
 
 interface NoteListProps {
   type: string;
+  searchQuery?: string;
   selectedNote: string | null;
   setSelectedNote: (id: string) => void;
 }
 
 const NoteList: React.FC<NoteListProps> = ({
   type,
+  searchQuery,
   selectedNote,
   setSelectedNote,
 }) => {
   const [notes, setNotes] = React.useState<Array<NoteType>>([]);
 
   React.useEffect(() => {
-    fetchNotes(type).then((data) => {
-      let filteredNotes = data as Array<NoteType>;
-      setNotes(filteredNotes);
-    });
-  }, [type, selectedNote]);
-
-  console.log("selectedNote", selectedNote);
+    if(!searchQuery) {
+      fetchNotes(type).then((data) => {
+        let filteredNotes = data as Array<NoteType>;
+        setNotes(filteredNotes);
+      });
+    } else {
+      fetchNotes("All Notes").then((data) => {
+        let filteredNotes = data as Array<NoteType>;
+        filteredNotes = filteredNotes.filter(note => note.title.toLowerCase().includes(searchQuery.toLowerCase()) || note.content.toLowerCase().includes(searchQuery.toLowerCase()) || note.tags.some(tag => tag.toLowerCase().includes(searchQuery.toLowerCase())));
+        setNotes(filteredNotes);
+      });
+    }
+    
+  }, [type, selectedNote, searchQuery]);
 
   return (
     <div className="flex flex-col gap-4 p-4 overflow-y-auto border-r border-gray-200 h-screen">
-      <PrimaryButton id="add-note-button" onClick={() => setSelectedNote("")}>+ Create New Note</PrimaryButton>
+      <PrimaryButton id="add-note-button" onClick={() => {
+        setSelectedNote("");
+        console.log("Create New Note");
+      }}>+ Create New Note</PrimaryButton>
       {type !== "All Notes" && (
         <p className="text-neutral-700 text-sm">
           {type === "Archive Notes"

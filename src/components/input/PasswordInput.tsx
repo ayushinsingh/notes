@@ -27,7 +27,7 @@ const PasswordInput: React.FC<PasswordInputProps> = (props) => {
       <div className="inline-block w-full relative">
         <input
           type={showPassword ? "text" : "password"}
-          id="password"
+          id={props.id || "password"}
           className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <span className="absolute top-[25%] right-4">

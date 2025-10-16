@@ -3,6 +3,7 @@ import NoteList from "../components/noteList/NoteList";
 import Note from "../components/note/Note";
 interface HomeProps {
   type: string;
+  searchQuery?: string;
 }
 const Home: React.FC<HomeProps> = ({type}) => {
   const [selectedNote, setSelectedNote] = React.useState<string>("");

@@ -8,43 +8,51 @@ interface NoteProps {
   id?: string;
 }
 
-const Note: React.FC<NoteProps> = ({id}) => {
+const Note: React.FC<NoteProps> = ({ id }) => {
   const [title, setTitle] = React.useState<string>("");
   const [tags, setTags] = React.useState<string>("");
   const [content, setContent] = React.useState<string>("");
   const [isArchived, setIsArchived] = React.useState<boolean>(false);
   const [lastEdited, setLastEdited] = React.useState<string>("Not yet saved");
 
-  const onSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Handle form submission logic here
-    if(!id) {
+    if (!id) {
       // Create a new note
       const payload = {
         title: title,
-        tags: tags.split(",").map(tag => tag.trim()),
+        tags: tags.split(",").map((tag) => tag.trim()),
         content: content,
         isArchived: isArchived,
-      }
+      };
+      console.log("Creating note with payload:", payload);
     } else {
       // Update existing note
       const payload = {
         title: title,
-        tags: tags.split(",").map(tag => tag.trim()),
+        tags: tags.split(",").map((tag) => tag.trim()),
         content: content,
         isArchived: isArchived,
         id: id,
-      }
+      };
+      console.log("Updating note with payload:", payload);
     }
-
-  }
+  };
 
   React.useEffect(() => {
-    if(!id) return;
+    if (!id) {
+      setTitle("");
+      setTags("");
+      setContent("");
+      setIsArchived(false);
+      setLastEdited("Not yet saved");
+      return;
+    }
     // Fetch note data from API or local storage using the id prop
     // For demonstration, we'll use static data
     fetchNoteById(id).then((data) => {
-      if(data) {
+      if (data) {
         const note = data as NoteType;
         setTitle(note.title);
         setTags(note.tags.join(", "));
@@ -57,7 +65,10 @@ const Note: React.FC<NoteProps> = ({id}) => {
 
   return (
     <div className="grid grid-cols-[1fr_30%] h-screen">
-      <form className="flex flex-col gap-4 px-6 py-4 border-r border-gray-200 h-screen" onSubmit={(e) => { e.preventDefault(); /* Handle form submission */ }}>
+      <form
+        className="flex flex-col gap-4 px-6 py-4 border-r border-gray-200 h-screen"
+        onSubmit={handleSubmit}
+      >
         <input
           id="title"
           className="w-full text-3xl font-bold border-0 focus:ring-0 focus:outline-none text-neutral-900"
@@ -118,7 +129,27 @@ const Note: React.FC<NoteProps> = ({id}) => {
           </SecondaryButton>
         </div>
       </form>
-      <div></div>
+      <div className="flex flex-col pl-4 py-4 h-screen gap-4">
+        {id && (
+          <>
+            {!isArchived ? (
+              <SecondaryButton id={"archive-button"}>
+                <img id="archive-icon" alt="archive" src="/Archive.svg" />
+                Archive
+              </SecondaryButton>
+            ) : (
+              <SecondaryButton id={"archive-button"}>
+                <img id="restore-icon" alt="restore" src="/Refresh left.svg" />
+                Restore
+              </SecondaryButton>
+            )}
+            <SecondaryButton id={"delete-button"}>
+              <img id="delete-icon" alt="delete" src="/Delete.svg" />
+              Delete
+            </SecondaryButton>
+          </>
+        )}
+      </div>
     </div>
   );
 };
