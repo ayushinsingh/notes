@@ -31,9 +31,9 @@ function App() {
     const savedFont = localStorage.getItem("fontTheme");
     if (savedFont) {
       const fontOptionsMap: { [key: string]: string } = {
-        "Sans-serif": "var(--font-option-sans)",
-        "Serif": "var(--font-option-serif)",
-        "Monospace": "var(--font-option-mono)",
+        "Sans-serif": "var(--font-sans)",
+        "Serif": "var(--font-serif)",
+        "Monospace": "var(--font-mono)",
       };
       const fontCSSValue = fontOptionsMap[savedFont];
       document.documentElement.style.setProperty('--user-font', fontCSSValue);

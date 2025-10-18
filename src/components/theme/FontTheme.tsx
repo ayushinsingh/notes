@@ -3,9 +3,9 @@ import PrimaryButton from "../buttons/PrimaryButton";
 import ThemeItem from "./ThemeItem";
 
 const fontOptionsMap: { [key: string]: string } = {
-  "Sans-serif": "var(--font-option-sans)",
-  "Serif": "var(--font-option-serif)",
-  "Monospace": "var(--font-option-mono)",
+  "Sans-serif": "var(--font-sans)",
+  "Serif": "var(--font-serif)",
+  "Monospace": "var(--font-mono)",
 };
 
 const FontTheme: React.FC = () => {

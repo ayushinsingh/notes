@@ -1,3 +1,16 @@
 @import "tailwindcss";
 
 @custom-variant dark (&:where(.dark, .dark *)); 
+
+@layer base {
+  /* This ensures the font-family for the entire document is always controlled by --user-font */
+  html {
+    font-family: var(--user-font, var(--font-sans)); 
+  }
+}
+
+@theme {
+  /* 1. DEFINE THE DYNAMIC TARGET VARIABLE */
+  /* This is the variable your React component is updating. */
+  --user-font: var(--font-sans); 
+}
