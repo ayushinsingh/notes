@@ -35,8 +35,9 @@ const Settings = () => {
           onClick={() => console.log("logout")}
         >
           <div className="flex flex-row items-center gap-2">
-            <img src="/Logout.svg" alt="Logout" className="w-5 h-5" />
-            <p className="w-full text-sm text-gray-700">Logout</p>
+            <img src="/Logout.svg" alt="Logout" className="block dark:hidden w-5 h-5" />
+            <img src="dark/Logout.svg" alt="Logout" className="hidden dark:block w-5 h-5" />
+            <p className="w-full text-sm text-gray-700 dark:text-white">Logout</p>
           </div>
         </div>
       </div>

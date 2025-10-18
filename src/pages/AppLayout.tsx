@@ -31,7 +31,7 @@ const AppLayout: React.FC = () => {
   }, [searchQuery]);
 
   return (
-    <div className="min-h-screen dark:bg-neutral-900 grid grid-cols-[20%_1fr]">
+    <div className="min-h-screen dark:bg-neutral-800 dark:text-white grid grid-cols-[20%_1fr]">
       <SideBar selected={selected} setSelected={setSelected} />
       <main className="flex flex-col">
         <div className="flex flex-row justify-between items-center border border-gray-200 px-6 py-4">
@@ -42,7 +42,13 @@ const AppLayout: React.FC = () => {
               <img
                 src="/Setting.svg"
                 alt="Settings"
-                className="h-6 w-6"
+                className="block dark:hidden h-6 w-6"
+                onClick={() => setSettingsOpen(true)}
+              />
+              <img
+                src="dark/SettingsDark.svg"
+                alt="Settings"
+                className="hidden dark:block h-6 w-6 "
                 onClick={() => setSettingsOpen(true)}
               />
             </button>

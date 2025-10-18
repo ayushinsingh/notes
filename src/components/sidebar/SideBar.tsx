@@ -24,7 +24,8 @@ const SideBar: React.FC<SideBarProps> = ({selected, setSelected}) => {
   return (
     <aside className="flex-column justify-center border border-gray-200 p-4 gap-4">
       <div className="flex w-full py-4">
-        <img src="/logo.svg" alt="Logo" className="h-7 w-20"/>
+        <img src="/logo.svg" alt="Logo" className="block dark:hidden h-7 w-20"/>
+        <img src="dark/logo.svg" alt="Logo" className="hidden dark:block h-7 w-20"/>
       </div>
       <div>
         <div>

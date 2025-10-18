@@ -16,15 +16,20 @@ const ThemeItem: React.FC<ThemeItemProps> = ({
 }) => {
   return (
     <div
-      className={`flex flex-row items-center gap-4 border border-gray-200 rounded-lg p-4 cursor-pointer hover:scale-[1.01] transition-transform hover:bg-gray-100 ${
-        selected ? "bg-gray-100" : ""
+      className={`flex flex-row items-center gap-4 border border-gray-200 dark:border-neutral-700 rounded-lg p-4 cursor-pointer hover:scale-[1.01] transition-transform hover:bg-gray-100 dark:hover:bg-neutral-700 ${
+        selected ? "bg-gray-100 dark:bg-neutral-700" : ""
       }`}
     >
-      <div className="flex items-center border bg-white border-gray-200 rounded-xl p-2">
+      <div className="flex items-center border bg-white dark:bg-neutral-900 border-gray-200 dark:border-neutral-600 rounded-xl p-2">
         <img
           src={iconPath}
           alt={label}
-          className="w-8 h-8 cursor-pointer hover:scale-105 transition-transform bg-white"
+          className="w-8 h-8 block dark:hidden cursor-pointer hover:scale-105 transition-transform"
+        />
+        <img
+          src={`dark${iconPath}`}
+          alt={label}
+          className="w-8 h-8 hidden dark:block cursor-pointer hover:scale-105 transition-transform"
         />
       </div>
       <div

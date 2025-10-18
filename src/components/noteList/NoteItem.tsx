@@ -12,7 +12,7 @@ interface NoteItemProps {
 const NoteItem: React.FC<NoteItemProps> = ({title, tags, date, selected, onClick}) => {
 
   return (
-    <div className={`flex flex-col gap-2 border-b border-gray-200 dark:border-neutral-600 p-2 hover:bg-gray-100 dark:hover:bg-neutral-600 rounded-sm cursor-pointer ${selected ? "dark:bg-neutral-600 bg-gray-100" : ""}`} onClick={onClick}>
+    <div className={`flex flex-col gap-2 border-b border-gray-200 dark:border-neutral-600 p-2 hover:bg-gray-100 dark:hover:bg-neutral-700 rounded-sm cursor-pointer ${selected ? "dark:bg-neutral-700 bg-gray-100" : ""}`} onClick={onClick}>
         <h3 className="text-lg font-semibold dark:text-white">{title}</h3>
         {tags.length > 0 && <div className="flex flex-row gap-1">
           {tags.map((tag: string) => (

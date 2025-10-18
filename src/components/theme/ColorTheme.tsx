@@ -47,7 +47,7 @@ const Background: React.FC = () => {
     <div className="p-8 flex flex-col gap-6 max-w-[75%]">
       <div>
         <h2 className="text-lg bold-700">Color Theme</h2>
-        <p className="text-md text-gray-700 ">Choose your color theme:</p>
+        <p className="text-md text-gray-700 dark:text-neutral-300 ">Choose your color theme:</p>
       </div>
       <div className="flex flex-col gap-4">
         <div onClick={() => setSelectedOption("light")}><ThemeItem selected={selectedOption === "light"} label="Light Mode" value="light" description="Pick a clean and classic light theme" iconPath="/Sun.svg" /></div>

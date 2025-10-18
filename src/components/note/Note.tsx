@@ -71,15 +71,16 @@ const Note: React.FC<NoteProps> = ({ id }) => {
       >
         <input
           id="title"
-          className="w-full text-3xl font-bold border-0 focus:ring-0 focus:outline-none text-neutral-900"
+          className="w-full text-3xl font-bold border-0 focus:ring-0 focus:outline-none"
           placeholder="Enter a title..."
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <div className="flex flex-col text-gray-500">
+        <div className="flex flex-col text-gray-500 dark:text-neutral-300">
           <div className="flex flex-row">
             <label htmlFor="tags" className="flex items-center text-md w-40">
-              <img className="w-6 h-5" src="/Tag.svg" />
+              <img className="block dark:hidden w-6 h-5" src="/Tag.svg" />
+              <img className="hidden dark:block w-6 h-5" src="dark/Tag.svg" />
               <span>Tags</span>
             </label>
             <input
@@ -92,7 +93,7 @@ const Note: React.FC<NoteProps> = ({ id }) => {
           </div>
         </div>
         {isArchived && (
-          <div className="flex flex-col text-gray-500">
+          <div className="flex flex-col text-gray-500 dark:text-neutral-300">
             <div className="flex flex-row">
               <div className="flex items-center text-md  w-40">
                 <img className="w-6 h-5" src="/Loading.svg" />
@@ -102,10 +103,11 @@ const Note: React.FC<NoteProps> = ({ id }) => {
             </div>
           </div>
         )}
-        <div className="flex flex-col text-gray-500">
+        <div className="flex flex-col text-gray-500 dark:text-neutral-300">
           <div className="flex flex-row">
             <div className="flex items-center text-md  w-40">
-              <img className="w-6 h-5" src="/CircleClock.svg" />
+              <img className="block dark:hidden w-6 h-5" src="/CircleClock.svg" />
+              <img className="hidden dark:block w-6 h-5" src="dark/CircleClock.svg" />
               <span>Last edited</span>
             </div>
             <p className="w-full focus:none text-md px-1">{lastEdited}</p>
@@ -134,17 +136,20 @@ const Note: React.FC<NoteProps> = ({ id }) => {
           <>
             {!isArchived ? (
               <SecondaryButton id={"archive-button"}>
-                <img id="archive-icon" alt="archive" src="/Archive.svg" />
+                <img id="archive-icon" alt="archive" src="/Archive.svg" className="block dark:hidden" />
+                <img id="archive-icon" alt="archive" src="dark/Archive.svg" className="hidden dark:block" />
                 Archive
               </SecondaryButton>
             ) : (
               <SecondaryButton id={"archive-button"}>
-                <img id="restore-icon" alt="restore" src="/Refresh left.svg" />
+                <img id="restore-icon" alt="restore" src="/Refresh left.svg" className="block dark:hidden" />
+                <img id="restore-icon" alt="restore" src="dark/Refresh left.svg" className="hidden dark:block" />
                 Restore
               </SecondaryButton>
             )}
             <SecondaryButton id={"delete-button"}>
-              <img id="delete-icon" alt="delete" src="/Delete.svg" />
+              <img id="delete-icon" alt="delete" src="/Delete.svg" className="block dark:hidden" />
+              <img id="delete-icon" alt="delete" src="dark/Delete.svg" className="hidden dark:block" />
               Delete
             </SecondaryButton>
           </>

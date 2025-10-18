@@ -41,7 +41,7 @@ const NoteList: React.FC<NoteListProps> = ({
         console.log("Create New Note");
       }}>+ Create New Note</PrimaryButton>
       {type !== "All Notes" && (
-        <p className="text-neutral-700 text-sm">
+        <p className="text-neutral-700 dark:text-white text-sm">
           {type === "Archive Notes"
             ? "All your archived notes are stored here. You can restore or delete them anytime."
             : `All notes with the "${type}" tag are shown here.`}

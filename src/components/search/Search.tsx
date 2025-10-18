@@ -9,7 +9,8 @@ const Search: React.FC<SearchProps> = ({query, setQuery}) => {
   return (
     <div className="relative w-[350px]">
       <span className="absolute top-[30%] left-4">
-        <img src="/Search.svg" alt="Search" className="h-5 w-5" />
+        <img src="/Search.svg" alt="Search" className="block dark:hidden h-5 w-5" />
+        <img src="dark/Search.svg" alt="Search" className="hidden dark:block h-5 w-5" />
       </span>
       <input
         id="app-search"

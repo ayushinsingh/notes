@@ -12,7 +12,7 @@ interface InputProps {
 const Input: React.FC<InputProps> = (props) => {
   return (
     <div className="w-full flex flex-col gap-1">
-      <label htmlFor="email" className="text-sm text-gray-700">
+      <label htmlFor="email" className="text-sm text-gray-700 dark:text-white">
         {props.label}
       </label>
       <input
