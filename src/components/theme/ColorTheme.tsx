@@ -50,9 +50,9 @@ const Background: React.FC = () => {
         <p className="text-md text-gray-700 dark:text-neutral-300 ">Choose your color theme:</p>
       </div>
       <div className="flex flex-col gap-4">
-        <div onClick={() => setSelectedOption("light")}><ThemeItem selected={selectedOption === "light"} label="Light Mode" value="light" description="Pick a clean and classic light theme" iconPath="/Sun.svg" /></div>
-        <div onClick={() => setSelectedOption("dark")}><ThemeItem selected={selectedOption === "dark"} label="Dark Mode" value="dark" description="Select a sleek and modern dark theme" iconPath="/DarkMode.svg" /></div>
-        <div onClick={() => setSelectedOption("system")}><ThemeItem selected={selectedOption === "system"} label="System" value="system" description="Adapts to your device’s theme" iconPath="/System.svg" /></div>
+        <div onClick={() => setSelectedOption("light")}><ThemeItem selected={selectedOption === "light"} label="Light Mode" description="Pick a clean and classic light theme" iconPath="/Sun.svg" /></div>
+        <div onClick={() => setSelectedOption("dark")}><ThemeItem selected={selectedOption === "dark"} label="Dark Mode" description="Select a sleek and modern dark theme" iconPath="/DarkMode.svg" /></div>
+        <div onClick={() => setSelectedOption("system")}><ThemeItem selected={selectedOption === "system"} label="System" description="Adapts to your device’s theme" iconPath="/System.svg" /></div>
       </div>
       <div className="flex flex-row justify-end">
         <PrimaryButton id="color-theme-apply-btn" onClick={handleApplyChanges}> Apply Changes</PrimaryButton>

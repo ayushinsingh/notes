@@ -32,7 +32,7 @@ const Login: React.FC = () => {
           <PrimaryButton id="login-button" type="submit">Login</PrimaryButton>
         </form>
         <div className="w-full flex flex-col gap-4">
-          <hr className="flex-grow border-gray-200"/>
+          <hr className="flex-grow border-gray-200 dark:border-neutral-800"/>
           <p className="text-center text-gray-400 text-xs">Or log in with:</p>
           <SecondaryButton id="login-with-google-button">
             <img src="/Google.svg" alt="Google Logo" className="block dark:hidden h-6 w-6"/>
@@ -40,7 +40,7 @@ const Login: React.FC = () => {
             Google
           </SecondaryButton>
         </div>
-        <hr className="flex-grow border-gray-200"/>
+        <hr className="flex-grow border-gray-200 dark:border-neutral-800"/>
         <div className="w-full flex justify-center items-center gap-1">
           <span className="text-xs text-gray-500 dark:text-neutral-300">No account yet?</span>
           <a href="/signup" className="text-xs hover:underline">Sign up</a>

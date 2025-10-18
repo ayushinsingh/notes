@@ -3,7 +3,6 @@ import React from "react";
 interface ThemeItemProps {
   selected: boolean;
   label: string;
-  value: string;
   description: string;
   iconPath: string;
 }

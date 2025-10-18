@@ -27,6 +27,20 @@ function App() {
         document.documentElement.classList.remove("light");
       }
     }
+
+    const savedFont = localStorage.getItem("fontTheme");
+    if (savedFont) {
+      const fontOptionsMap: { [key: string]: string } = {
+        "Sans-serif": "var(--font-option-sans)",
+        "Serif": "var(--font-option-serif)",
+        "Monospace": "var(--font-option-mono)",
+      };
+      const fontCSSValue = fontOptionsMap[savedFont];
+      document.documentElement.style.setProperty('--user-font', fontCSSValue);
+    } else {
+      document.documentElement.style.setProperty('--user-font', "var(--font-option-serif)");
+      localStorage.setItem("fontTheme", "Sans-serif");
+    }
   }, []);
 
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import MenuBar from "../components/sidebar/MenuBar";
 import Background from "../components/theme/ColorTheme";
-import Font from "../components/theme/FontTheme";
+import FontTheme from "../components/theme/FontTheme";
 import ChangePassword from "../components/password/ChangePassword";
 
 const Settings = () => {
@@ -42,7 +42,7 @@ const Settings = () => {
         </div>
       </div>
       {selected === "color" && <Background />}
-      {selected === "font" && <Font />}
+      {selected === "font" && <FontTheme />}
       {selected === "password" && <ChangePassword />}
     </div>
   );
