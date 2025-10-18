@@ -35,7 +35,7 @@ const NoteList: React.FC<NoteListProps> = ({
   }, [type, selectedNote, searchQuery]);
 
   return (
-    <div className="flex flex-col gap-4 p-4 overflow-y-auto border-r border-gray-200 h-screen">
+    <div className="flex flex-col gap-4 p-4 overflow-y-auto border-r border-gray-200 dark:border-neutral-700 h-screen">
       <PrimaryButton id="add-note-button" onClick={() => {
         setSelectedNote("");
         console.log("Create New Note");

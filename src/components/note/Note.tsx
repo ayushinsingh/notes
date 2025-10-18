@@ -66,7 +66,7 @@ const Note: React.FC<NoteProps> = ({ id }) => {
   return (
     <div className="grid grid-cols-[1fr_30%] h-screen">
       <form
-        className="flex flex-col gap-4 px-6 py-4 border-r border-gray-200 h-screen"
+        className="flex flex-col gap-4 px-6 py-4 border-r border-gray-200 dark:border-neutral-700 h-screen"
         onSubmit={handleSubmit}
       >
         <input
@@ -113,7 +113,7 @@ const Note: React.FC<NoteProps> = ({ id }) => {
             <p className="w-full focus:none text-md px-1">{lastEdited}</p>
           </div>
         </div>
-        <hr className="border border-gray-200" />
+        <hr className="border border-gray-200 dark:border-neutral-700" />
         <textarea
           id="content"
           className="w-full border-0 focus:ring-0 focus:outline-none resize-none h-[61vh] overflow-y-auto"
@@ -121,7 +121,7 @@ const Note: React.FC<NoteProps> = ({ id }) => {
           value={content}
           onChange={(e) => setContent(e.target.value)}
         />
-        <hr className="border border-gray-200" />
+        <hr className="border border-gray-200 dark:border-neutral-700" />
         <div className="flex flex-row justify-start gap-4">
           <PrimaryButton id="save-note-button" type="submit">
             Save Note
