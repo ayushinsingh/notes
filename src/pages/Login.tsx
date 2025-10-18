@@ -42,7 +42,7 @@ const Login: React.FC = () => {
         </div>
         <hr className="flex-grow border-gray-200"/>
         <div className="w-full flex justify-center items-center gap-1">
-          <span className="text-xs text-gray-500">No account yet?</span>
+          <span className="text-xs text-gray-500 dark:text-neutral-300">No account yet?</span>
           <a href="/signup" className="text-xs hover:underline">Sign up</a>
         </div>
       </Card>
