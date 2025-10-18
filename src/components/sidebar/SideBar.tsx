@@ -22,7 +22,7 @@ const SideBar: React.FC<SideBarProps> = ({selected, setSelected}) => {
   
   
   return (
-    <aside className="flex-column justify-center border border-gray-200 p-4 gap-4">
+    <aside className="flex-column justify-center border border-gray-200 dark:border-neutral-700 p-4 gap-4">
       <div className="flex w-full py-4">
         <img src="/logo.svg" alt="Logo" className="block dark:hidden h-7 w-20"/>
         <img src="dark/logo.svg" alt="Logo" className="hidden dark:block h-7 w-20"/>
@@ -39,7 +39,7 @@ const SideBar: React.FC<SideBarProps> = ({selected, setSelected}) => {
             />
           ))}
         </div>
-        <hr className="flex-grow border-gray-200" />
+        <hr className="flex-grow border-gray-200 dark:border-neutral-700" />
         <div>
           <h2 className="text-sm text-gray-500 mx-1">Tags</h2>
           <div>

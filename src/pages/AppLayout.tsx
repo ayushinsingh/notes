@@ -34,7 +34,7 @@ const AppLayout: React.FC = () => {
     <div className="min-h-screen dark:bg-neutral-800 dark:text-white grid grid-cols-[20%_1fr]">
       <SideBar selected={selected} setSelected={setSelected} />
       <main className="flex flex-col">
-        <div className="flex flex-row justify-between items-center border border-gray-200 px-6 py-4">
+        <div className="flex flex-row justify-between items-center border border-gray-200 dark:border-neutral-700 px-6 py-4">
           <h1 className="font-bold text-2xl">{title}</h1>
           <div className="flex flex-row items-center gap-4">
             <Search query={searchQuery} setQuery={setSearchQuery} />

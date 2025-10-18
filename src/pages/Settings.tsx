@@ -8,7 +8,7 @@ const Settings = () => {
   const [selected, setSelected] = React.useState<string>("color");
   return (
     <div className="grid grid-cols-[25%_1fr] px-6">
-      <div className="flex flex-col border-r border-gray-200 h-screen px-6">
+      <div className="flex flex-col border-r border-gray-200 dark:border-neutral-700 h-screen px-6">
         <MenuBar
           logoName="Sun.svg"
           label="Color Theme"
@@ -27,7 +27,7 @@ const Settings = () => {
           selected={selected === "password"}
           onClick={() => setSelected("password")}
         />
-        <hr className="border-gray-200" />
+        <hr className="border-gray-200 dark:border-neutral-700" />
         <div
           className={
             "flex flex-row justify-between p-2 my-2 rounded-md cursor-pointer hover:bg-gray-100 "
