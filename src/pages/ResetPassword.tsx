@@ -5,14 +5,15 @@ import Card from "../components/card/Card";
 
 const ResetPassword: React.FC = () => {
   return (
-    <div className="min-h-screen flex justify-center items-center margin-auto bg-neutral-100">
+    <div className="min-h-screen flex justify-center items-center margin-auto bg-neutral-100 dark:bg-neutral-700">
       <Card>
         <div className="w-full flex justify-center">
-          <img src="/logo.svg" alt="Logo" className="h-7 w-20" />
+          <img src="/logo.svg" alt="Logo" className="block dark:hidden h-7 w-20" />
+          <img src="dark/logo.svg" alt="Logo" className="hidden dark:block h-7 w-20" />
         </div>
         <div className= "w-full flex flex-col gap-2">
-          <h1 className="text-center font-bold text-xl color-neutral-950">Reset your password</h1>
-          <p className="text-center text-xs text-gray-500">Choose a new password to secure your account.</p>
+          <h1 className="text-center font-bold text-xl">Reset your password</h1>
+          <p className="text-center text-xs text-gray-500 dark:text-neutral-300">Choose a new password to secure your account.</p>
         </div>
         <form className="w-full flex flex-col gap-4" onSubmit={(e) => {
           e.preventDefault();

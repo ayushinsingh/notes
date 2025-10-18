@@ -7,14 +7,15 @@ import Card from "../components/card/Card";
 
 const Login: React.FC = () => {
   return (
-    <div className="min-h-screen flex justify-center items-center margin-auto bg-neutral-100">
+    <div className="min-h-screen flex justify-center items-center margin-auto bg-neutral-100 dark:bg-neutral-700">
       <Card>
         <div className="w-full flex justify-center">
-          <img src="/logo.svg" alt="Logo" className="h-7 w-20" />
+          <img src="/logo.svg" alt="Logo" className="block dark:hidden h-7 w-20" />
+          <img src="dark/logo.svg" alt="Logo" className="hidden dark:block h-7 w-20" />
         </div>
         <div className= "w-full flex flex-col gap-2">
-          <h1 className="text-center font-bold text-xl color-neutral-950">Welcome to Note</h1>
-          <p className="text-center text-xs text-gray-500">Please log in to continue</p>
+          <h1 className="text-center font-bold text-xl">Welcome to Note</h1>
+          <p className="text-center text-xs text-gray-500 dark:text-neutral-300">Please log in to continue</p>
         </div>
         <form
           className="w-full flex flex-col gap-4"
@@ -34,7 +35,8 @@ const Login: React.FC = () => {
           <hr className="flex-grow border-gray-200"/>
           <p className="text-center text-gray-400 text-xs">Or log in with:</p>
           <SecondaryButton id="login-with-google-button">
-            <img src="/Vector.svg" alt="Google Logo" className="h-5 w-5"/>
+            <img src="/Google.svg" alt="Google Logo" className="block dark:hidden h-6 w-6"/>
+            <img src="dark/Google.svg" alt="Google Logo" className="hidden dark:block h-5 w-5"/>
             Google
           </SecondaryButton>
         </div>

@@ -5,16 +5,17 @@ import Card from "../components/card/Card";
 
 const ForgotPassword: React.FC = () => {
   return (
-    <div className="min-h-screen flex justify-center items-center margin-auto bg-neutral-100">
+    <div className="min-h-screen flex justify-center items-center margin-auto bg-neutral-100 dark:bg-neutral-700">
       <Card>
         <div className="w-full flex justify-center">
-          <img src="/logo.svg" alt="Logo" className="h-7 w-20" />
+          <img src="/logo.svg" alt="Logo" className="block dark:hidden h-7 w-20" />
+          <img src="dark/logo.svg" alt="Logo" className="hidden dark:block h-7 w-20" />
         </div>
         <div className="w-full flex flex-col gap-2">
-          <h1 className="text-center font-bold text-xl color-neutral-950">
+          <h1 className="text-center font-bold text-xl">
             Forgotten your password?
           </h1>
-          <p className="text-center text-xs text-gray-500">
+          <p className="text-center text-xs text-gray-500 dark:text-neutral-300">
             Enter your email below, and we'll send you a link to reset it.
           </p>
         </div>
